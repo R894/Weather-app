@@ -14,10 +14,10 @@ async function getCountryLatLon(country){
     }
 }
 
-async function fetchWeatherData(country){
+async function fetchWeatherData(country, units){
     try{
         const latLon = await getCountryLatLon(country);
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latLon[0]}&lon=${latLon[1]}&appid=${apiKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latLon[0]}&lon=${latLon[1]}&units=${units}&appid=${apiKey}`;
 
         const response = await fetch(url, {mode: 'cors'});
         const data = await response.json();

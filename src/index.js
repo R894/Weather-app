@@ -3,16 +3,29 @@ import fetchWeatherData from './weather.js';
 import displayController from './displayController';
 
 let d = new displayController();
-fetchWeatherData('Israel').then(info => {
-    d.setWeatherData(info);
-    d.updateWeatherDisplay(info);
+
+fetchWeatherData('Tel Aviv', 'metric').then(info => {
+    d.changeWeather(info);
 });
 
 const searchButton = document.getElementById("search-button");
 
-searchButton.addEventListener('click', () => {
+searchButton.addEventListener('click', (e) => {
+    e.preventDefault();
     let searchInput = document.getElementById("search-input");
+    let celsius = document.getElementById("celsius");
+    let unit;
 
-    fetchWeatherData(searchInput.value).then(info => displayWeatherData(info));
+    if(celsius.checked){
+        unit = 'metric';
+    }else{
+        unit = 'imperial';
+    }
 
+    fetchWeatherData(searchInput.value, unit).then(info => d.changeWeather(info));
+});
+
+searchButton.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
 });
