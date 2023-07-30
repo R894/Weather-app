@@ -39,5 +39,4 @@ async function fetchWeatherData(country){
     }
 }
 
-
 export default fetchWeatherData;

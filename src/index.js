@@ -1,9 +1,12 @@
-import displayWeatherData from './displayController';
 import './style.css';
 import fetchWeatherData from './weather.js';
+import displayController from './displayController';
 
-
-fetchWeatherData('Israel').then(info => displayWeatherData(info));
+let d = new displayController();
+fetchWeatherData('Israel').then(info => {
+    d.setWeatherData(info);
+    d.updateWeatherDisplay(info);
+});
 
 const searchButton = document.getElementById("search-button");
 

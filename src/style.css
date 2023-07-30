@@ -12,7 +12,6 @@ body {
 
 .header {
     display: flex;
-    align-items: center;
     background-color: #f25c05;
     gap: 8px;
     padding: 1rem;
@@ -26,10 +25,13 @@ body {
 }
 
 .content {
+    display: flex;
+    justify-content: center;
     padding: 1rem;
 }
 
 .weather {
+    min-width: 50%;
     font-size: 1.1rem;
     padding: 1rem;
     background-color: #ff9f40;
